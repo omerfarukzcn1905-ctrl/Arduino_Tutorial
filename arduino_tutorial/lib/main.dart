@@ -55,13 +55,17 @@ class UserDataManager {
 
   Future<void> initialize() async {
     if (_isInitialized) return;
-    
+
+    // Display what API URL is being used (useful for debugging deployments)
+    print('➡️ API override (from --dart-define): "$_envApiUrl"');
+    print('➡️ Final API URL used: "$_apiUrl"');
+
     try {
       // Test connection to backend
       final response = await http.get(
         Uri.parse('$_apiUrl/health'),
       ).timeout(Duration(seconds: 5));
-      
+
       if (response.statusCode == 200) {
         print('✅ Connected to backend API at $_apiUrl');
       } else {
@@ -69,9 +73,9 @@ class UserDataManager {
       }
     } catch (e) {
       print('❌ Error connecting to backend: $e');
-      print('Make sure the Node.js server is running on port 3000');
+      print('Make sure the Node.js server is running on port 3000 (or the correct backend URL)');
     }
-    
+
     _isInitialized = true;
   }
 
