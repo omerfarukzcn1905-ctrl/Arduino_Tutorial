@@ -13,10 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.10.6'
+      - name: Install Flutter SDK
+        run: |
+          wget -q https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.6-stable.tar.xz
+          tar xf flutter_linux_3.10.6-stable.tar.xz
+          echo "${PWD}/flutter/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: flutter pub get
