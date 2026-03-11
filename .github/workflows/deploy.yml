@@ -20,9 +20,11 @@ jobs:
           echo "${PWD}/flutter/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
+        working-directory: arduino_tutorial
         run: flutter pub get
 
       - name: Build web
+        working-directory: arduino_tutorial
         run: |
           flutter build web --release \
             --dart-define=API_URL=${{ secrets.API_URL }}
@@ -31,4 +33,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/web
+          publish_dir: arduino_tutorial/build/web
