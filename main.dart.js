@@ -42612,7 +42612,7 @@ bz(){this.cE()
 this.ct()
 this.hm()}}
 A.ahG.prototype={
-goY(){return"/api"},
+goY(){return"https://arduino-tutorial.onrender.com/api"},
 hy(a){var s=0,r=A.U(t.H),q,p=2,o=[],n=this,m,l,k,j
 var $async$hy=A.V(function(b,c){if(b===1){o.push(c)
 s=p}for(;;)switch(s){case 0:if(n.a){s=1
