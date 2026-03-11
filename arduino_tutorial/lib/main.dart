@@ -26,10 +26,12 @@ class UserDataManager {
       return _envApiUrl;
     }
 
-    // On web, prefer a relative path so the app works when hosted on the same origin.
-    // This makes deployment much easier (no need to hardcode backend host).
+    // On web, prefer a hosted backend URL (Render) rather than a relative path.
+    // This avoids the 404/405 issues when the app is served from GitHub Pages.
     if (kIsWeb) {
-      return '/api';
+      return _envApiUrl.isNotEmpty
+          ? _envApiUrl
+          : 'https://arduino-tutorial.onrender.com/api';
     }
 
     // Use emulator-friendly addresses when running on mobile emulators.
