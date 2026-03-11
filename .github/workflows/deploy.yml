@@ -30,6 +30,7 @@ jobs:
         working-directory: arduino_tutorial
         run: |
           flutter build web --release \
+            --base-href /Arduino_Tutorial/ \
             --dart-define=API_URL=${{ secrets.API_URL }}
 
       - name: Deploy to GitHub Pages
